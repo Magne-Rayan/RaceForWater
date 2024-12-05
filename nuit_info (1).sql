@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : jeu. 05 déc. 2024 à 19:10
+-- Généré le : jeu. 05 déc. 2024 à 20:03
 -- Version du serveur : 8.3.0
 -- Version de PHP : 8.2.18
 
@@ -20,6 +20,20 @@ SET time_zone = "+00:00";
 --
 -- Base de données : `nuit_info`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `lier`
+--
+
+DROP TABLE IF EXISTS `lier`;
+CREATE TABLE IF NOT EXISTS `lier` (
+  `ref_question` int NOT NULL,
+  `ref_score` int NOT NULL,
+  KEY `fk_lier_question` (`ref_question`),
+  KEY `fk_lier_score` (`ref_score`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -58,14 +72,22 @@ CREATE TABLE IF NOT EXISTS `reponse` (
 
 DROP TABLE IF EXISTS `score`;
 CREATE TABLE IF NOT EXISTS `score` (
-  `id_score` int NOT NULL,
+  `id_score` int NOT NULL AUTO_INCREMENT,
   `pseudo` varchar(100) NOT NULL,
-  `score` int NOT NULL
+  `score` int NOT NULL,
+  PRIMARY KEY (`id_score`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Contraintes pour les tables déchargées
 --
+
+--
+-- Contraintes pour la table `lier`
+--
+ALTER TABLE `lier`
+  ADD CONSTRAINT `fk_lier_question` FOREIGN KEY (`ref_question`) REFERENCES `question` (`id_question`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `fk_lier_score` FOREIGN KEY (`ref_score`) REFERENCES `score` (`id_score`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Contraintes pour la table `question`
