@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : jeu. 05 déc. 2024 à 18:02
+-- Généré le : jeu. 05 déc. 2024 à 18:24
 -- Version du serveur : 8.3.0
 -- Version de PHP : 8.2.18
 
@@ -31,6 +31,7 @@ DROP TABLE IF EXISTS `reponse`;
 CREATE TABLE IF NOT EXISTS `reponse` (
   `id_reponse` int NOT NULL AUTO_INCREMENT,
   `contenu` varchar(255) NOT NULL,
+  `correction` tinyint NOT NULL,
   PRIMARY KEY (`id_reponse`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 COMMIT;
