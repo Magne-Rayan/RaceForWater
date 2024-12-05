@@ -13,6 +13,7 @@
     <h1>Quiz</h1>
     <div id="quiz">
         <p class="question">
+        <form action="" method="post">
             <?php
 
             use controller\QuestionController;
@@ -29,23 +30,22 @@
             $question = $questionController->getQuestion($score);
             echo $question['question'];
             ?>
-        </p>
-        <?php
-        $reponseController = new \ReponseController();
-        $reponse = $reponseController->getReponse($question['id_question']);
-        foreach ($reponse as $reponse) {
-        ?>
-        <div class="option">
-            <input name="<?= $reponse['contenu']?>" type="checkbox"/>
-            <label><?= $reponse['contenu']?></label>
-        </div>
-        <?php
-        }
-        ?>
-
+            </p>
+            <?php
+            $reponseController = new \ReponseController();
+            $reponse = $reponseController->getReponse($question['id_question']);
+            foreach ($reponse as $reponse) {
+                ?>
+                <div class="option">
+                    <input name="<?= $reponse['contenu']?> value="<?= $reponse['contenu']?>" type="checkbox"/>
+                    <label><?= $reponse['contenu']?></label>
+                </div>
+                <?php
+            }
+            ?>
+            <button id="submit" name="soumettre"  class="button">Soumettre</button>
+        </form>
     </div>
-    <button id="submit" class="button">Soumettre</button>
-
 </div>
 </body>
 </html>
