@@ -12,19 +12,9 @@
 <div class="container">
     <h1>Quiz</h1>
     <div id="quiz">
-        <p class="question">Capitale de la France ?</p>
-        <div class="option">
-            <input name="pays" type="checkbox"/>
-            <label>Paris</label>
-        </div>
 
-        <div class="option">
-            <input type="checkbox" name="pays"/>
-            <label>Londre</label>
-        </div>
     </div>
     <button id="submit" class="button">Soumettre</button>
-
 </div>
 </body>
 </html>
