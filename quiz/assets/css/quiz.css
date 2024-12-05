@@ -35,6 +35,13 @@ h1 {
     color: #555;
 }
 
+label{
+    font-weight: bold;
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: #555;
+}
+
 .options {
     margin-bottom: 30px;
     text-align: left;
@@ -104,9 +111,13 @@ h1 {
     display: none;
 }
 
-.container {
-    animation: fadeIn 0.8s ease-in-out;
+.container input{
+    align-items: center;
+    padding: 5px 15px;
+    border-radius: 8px;
 }
+
+form{}
 
 @keyframes fadeIn {
     from {
