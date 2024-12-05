@@ -1,24 +1,21 @@
 <?php
 
-namespace App\Http\Controllers;
-
-use Bdd;
-use Score;
-
 include '../bdd/Bdd.php';
 
 class ScoreController
 {
     public function start(Score $score)
     {
-        $bdd = new Bdd();
+        $bdd = new \Bdd();
         $req = $bdd->getBdd()->prepare("INSERT INTO score (pseudo, score) VALUES(:pseudo, :score)");
-        $req->execute(array(
-            'pseudo' => $score->getPseudo(),
-            'score' => 0,
+            $req->execute(array(
+                'pseudo' => $score->getPseudo(),
+                'score' => 0,
         ));
-        $req = $bdd->getBdd()->prepare("SELECT * FROM score WHERE pseudo = :pseudo");
-        $req->execute(array(['pseudo' => $score->getPseudo()]));
+        $requet = $bdd->getBdd()->prepare("SELECT * FROM score WHERE pseudo = :pseudo");
+        $requet->execute([
+            'pseudo' => $score->getPseudo()
+        ]);
         $result = $req->fetch();
         session_start();
         $score->setId($result['id_score']);

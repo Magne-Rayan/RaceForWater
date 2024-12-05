@@ -1,0 +1,113 @@
+Index: vue/quizRaceForWater.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!doctype html>\r\n<html lang=\"fr\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta name=\"viewport\"\r\n          content=\"width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0\">\r\n    <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">\r\n    <link rel=\"stylesheet\" href=\"/quiz/assets/css/quiz.css\">\r\n    <title>Quiz</title>\r\n</head>\r\n<body>\r\n<div class=\"container\">\r\n    <h1>Quiz</h1>\r\n    <div id=\"quiz\">\r\n        <p class=\"question\">\r\n            <?php\r\n\r\n            use controller\\QuestionController;\r\n\r\n            include '../src/controller/QuestionController.php';\r\n            $questionController = new QuestionController();\r\n            echo $questionController->getQuestion()\r\n            ?>\r\n        </p>\r\n        <div class=\"option\">\r\n            <input name=\"pays\" type=\"checkbox\"/>\r\n            <label>Paris</label>\r\n        </div>\r\n\r\n        <div class=\"option\">\r\n            <input type=\"checkbox\" name=\"pays\"/>\r\n            <label>Londre</label>\r\n        </div>\r\n    </div>\r\n    <button id=\"submit\" class=\"button\">Soumettre</button>\r\n\r\n</div>\r\n</body>\r\n</html>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/vue/quizRaceForWater.php b/vue/quizRaceForWater.php
+--- a/vue/quizRaceForWater.php	(revision eae809b2c6f491e7af90a0fb16ce1e3c88afd91f)
++++ b/vue/quizRaceForWater.php	(date 1733432792032)
+@@ -16,21 +16,33 @@
+             <?php
+ 
+             use controller\QuestionController;
++            use controller\ReponseController;
+ 
+             include '../src/controller/QuestionController.php';
++            include '../src/controller/ReponseController.php';
++            include '../src/model/Score.php';
++            session_start();
++            $score=new Score([
++                'id'=>$_SESSION['id_score'],
++            ]);
+             $questionController = new QuestionController();
+-            echo $questionController->getQuestion()
++            $question = $questionController->getQuestion($score);
++            echo $question['question'];
+             ?>
+         </p>
+-        <div class="option">
+-            <input name="pays" type="checkbox"/>
+-            <label>Paris</label>
+-        </div>
+-
++        <?php
++        $reponseController = new ReponseController();
++        $reponse = $reponseController->getReponse($question['id_question']);
++        foreach ($reponse as $reponse) {
++        ?>
+         <div class="option">
+-            <input type="checkbox" name="pays"/>
+-            <label>Londre</label>
++            <input name="<?= $reponse['contenu']?>" type="checkbox"/>
++            <label><?= $reponse['contenu']?></label>
+         </div>
++        <?php
++        }
++        ?>
++
+     </div>
+     <button id="submit" class="button">Soumettre</button>
+ 
+Index: src/controller/QuestionController.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\r\n\r\nnamespace controller;\r\nuse Bdd;\r\n\r\ninclude '../bdd/Bdd.php';\r\nclass QuestionController\r\n{\r\n\r\n    public function getQuestion(){\r\n        $bdd = new Bdd();\r\n        $req=$bdd->getBdd()->prepare(\"SELECT * FROM question\");\r\n        $req->execute();\r\n        $questions = $req->fetch();\r\n        return $questions;\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/controller/QuestionController.php b/src/controller/QuestionController.php
+--- a/src/controller/QuestionController.php	(revision eae809b2c6f491e7af90a0fb16ce1e3c88afd91f)
++++ b/src/controller/QuestionController.php	(date 1733431289555)
+@@ -2,15 +2,16 @@
+ 
+ namespace controller;
+ use Bdd;
+-
+-include '../bdd/Bdd.php';
++use Score;
+ class QuestionController
+ {
+ 
+-    public function getQuestion(){
++    public function getQuestion( Score $score){
+         $bdd = new Bdd();
+-        $req=$bdd->getBdd()->prepare("SELECT * FROM question");
+-        $req->execute();
++        $req=$bdd->getBdd()->prepare("SELECT * FROM question where id_question not in(SELECT ref_question from lier where ref_score = :score) ORDER BY RAND() LIMIT 1;");
++        $req->execute(array(
++            'score'=>$score->getId()
++        ));
+         $questions = $req->fetch();
+         return $questions;
+     }
+Index: src/controller/ReponseController.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/controller/ReponseController.php b/src/controller/ReponseController.php
+new file mode 100644
+--- /dev/null	(date 1733433602636)
++++ b/src/controller/ReponseController.php	(date 1733433602636)
+@@ -0,0 +1,18 @@
++<?php
++
++namespace controller;
++
++use Bdd;
++use Question;
++
++class ReponseController
++{
++    public function getReponse(Question $question){
++        $bdd = new Bdd();
++        $req=$bdd->getBdd()->prepare("SELECT * FROM reponse WHERE ref_question=:question");
++        $req->execute(array(
++            'question'=>$question->getId()
++        ));
++        return $req;
++    }
++}
+\ No newline at end of file

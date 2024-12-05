@@ -16,21 +16,33 @@
             <?php
 
             use controller\QuestionController;
+            use controller\ReponseController;
 
             include '../src/controller/QuestionController.php';
-            $questionController = new QuestionController();
-            echo $questionController->getQuestion()
+            include '../src/controller/ReponseController.php';
+            include '../src/model/Score.php';
+            session_start();
+            $score=new Score([
+                'id'=>$_SESSION['score']->getId(),
+            ]);
+            $questionController = new \QuestionController();
+            $question = $questionController->getQuestion($score);
+            echo $question['question'];
             ?>
         </p>
+        <?php
+        $reponseController = new \ReponseController();
+        $reponse = $reponseController->getReponse($question['id_question']);
+        foreach ($reponse as $reponse) {
+        ?>
         <div class="option">
-            <input name="pays" type="checkbox"/>
-            <label>Paris</label>
+            <input name="<?= $reponse['contenu']?>" type="checkbox"/>
+            <label><?= $reponse['contenu']?></label>
         </div>
+        <?php
+        }
+        ?>
 
-        <div class="option">
-            <input type="checkbox" name="pays"/>
-            <label>Londre</label>
-        </div>
     </div>
     <button id="submit" class="button">Soumettre</button>
 
