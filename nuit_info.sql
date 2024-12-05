@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : jeu. 05 déc. 2024 à 18:24
+-- Généré le : jeu. 05 déc. 2024 à 19:10
 -- Version du serveur : 8.3.0
 -- Version de PHP : 8.2.18
 
@@ -24,6 +24,21 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `question`
+--
+
+DROP TABLE IF EXISTS `question`;
+CREATE TABLE IF NOT EXISTS `question` (
+  `id_question` int NOT NULL AUTO_INCREMENT,
+  `question` text NOT NULL,
+  `ref_reponse` int NOT NULL,
+  PRIMARY KEY (`id_question`),
+  KEY `fk_question_responce` (`ref_reponse`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `reponse`
 --
 
@@ -34,6 +49,29 @@ CREATE TABLE IF NOT EXISTS `reponse` (
   `correction` tinyint NOT NULL,
   PRIMARY KEY (`id_reponse`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `score`
+--
+
+DROP TABLE IF EXISTS `score`;
+CREATE TABLE IF NOT EXISTS `score` (
+  `id_score` int NOT NULL,
+  `pseudo` varchar(100) NOT NULL,
+  `score` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Contraintes pour les tables déchargées
+--
+
+--
+-- Contraintes pour la table `question`
+--
+ALTER TABLE `question`
+  ADD CONSTRAINT `fk_question_responce` FOREIGN KEY (`ref_reponse`) REFERENCES `reponse` (`id_reponse`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
