@@ -162,7 +162,7 @@
         {
             x: 50, y: 40, name: "Poumons",
             info: "Les poumons permettent de respirer et d'oxygéner le sang.",
-            image: "img/poumons.png",
+            image: "img/poumon.png",
             text: "Les poumons humains ont une surface interne équivalente à celle d'un court de tennis, permettant un échange gazeux efficace. Environ 300 millions d'alvéoles dans les poumons absorbent l'oxygène et libèrent le dioxyde de carbone. Un adulte respire environ 11 000 litres d'air par jour.",
             secondaryImage: "img/ocean_oxygen.png",
             secondaryText: "Les poumons sont comparables aux océans, qui produisent environ 50 à 70% de l'oxygène de l'atmosphère grâce au phytoplancton. Ces organismes microscopiques absorbent chaque année environ 37 milliards de tonnes de CO₂, jouant un rôle vital dans la régulation du climat mondial, tout comme les poumons régulent les niveaux de dioxyde de carbone dans le corps."
@@ -259,9 +259,7 @@
         summaryText.innerHTML = defaultText;
         mainImage.src = defaultImage;
         mainImage.alt = "Système musculaire";
-
         secondaryContainer.style.display = 'none';
-
         hotspotsElements.forEach(el => el.style.display = 'block');
         backButton.style.display = 'none';
     });
