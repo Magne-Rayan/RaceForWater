@@ -215,7 +215,7 @@
     const secondaryText = document.getElementById('secondary-text');
     const backButton = document.getElementById('back-button');
     const defaultImage = "img/human_body.png";
-    const defaultTitle = "Le corps humain";
+    const defaultTitle = "Le corps humain et l'océan";
     const defaultText = addLineBreaks(`
     Le corps humain est une machine biologique fascinante, composée de systèmes interconnectés qui travaillent en harmonie pour maintenir la vie.
     Avec plus de 37 trillions de cellules, un cœur battant environ 100 000 fois par jour, et des poumons traitant 11 000 litres d'air quotidiennement, chaque partie joue un rôle crucial.
