@@ -87,7 +87,7 @@
 <h1 class="title">RaceForWater</h1>
 <div class="main-content">
     <div class="image-container">
-        <img src="../img/coeur.png" alt="Système musculaire" class="anatomy-image">
+        <img src="../img/Cerveau.png" alt="Système musculaire" class="anatomy-image">
         <!-- Les points seront ajoutés ici par JavaScript -->
     </div>
     <div class="summary-area">
