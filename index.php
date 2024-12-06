@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RaceForWater - Système Musculaire</title>
+    <title>RaceForWater - Le Corps Humain et l'Océan</title>
     <style>
         * {
             margin: 0;
@@ -13,9 +13,9 @@
 
         body {
             font-family: Arial, sans-serif;
-            background-color: #000;
-            color: #fff;
-            height: 100vh;
+            background: linear-gradient(to bottom, #001f3f, #0077be);
+            color: #ffffff;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
         }
@@ -23,7 +23,9 @@
         .title {
             text-align: center;
             padding: 20px 0;
-            font-size: 2em;
+            font-size: 2.5em;
+            color: #7fdbff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         .main-content {
@@ -41,110 +43,117 @@
         }
 
         .anatomy-image {
-            height: 100%;
+            max-height: 90vh;
             object-fit: contain;
         }
 
         .summary-area {
             width: 50%;
             padding: 20px;
-            background-color: #111;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
             overflow-y: auto;
+            border-radius: 10px;
+            margin: 20px;
         }
 
         .hotspot {
             position: absolute;
-            width: 12px;
-            height: 12px;
-            background-color: #fff;
+            width: 20px;
+            height: 20px;
+            background-color: rgba(127, 219, 255, 0.7);
             border-radius: 50%;
             cursor: pointer;
+            transition: all 0.3s ease;
         }
 
-        .info-card {
-            position: absolute;
-            background-color: rgba(0, 0, 0, 0.8);
-            border: 1px solid #fff;
-            padding: 10px;
-            border-radius: 5px;
-            display: none;
-            max-width: 200px;
+        .hotspot:hover {
+            background-color: #7fdbff;
+            transform: scale(1.2);
         }
 
         .secondary-container {
             margin-top: 20px;
-            display: none;
         }
 
         .secondary-image {
             width: 100%;
-            margin-top: 20px;
-            border-radius: 8px;
-            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
         }
 
         .back-button {
-            display: none;
+            display: inline-block;
             padding: 10px 20px;
-            background-color: #3498db;
-            color: #fff;
+            background-color: #7fdbff;
+            color: #001f3f;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             font-size: 1em;
             margin-top: 20px;
+            transition: background-color 0.3s ease;
         }
 
         .back-button:hover {
-            background-color: #2980b9;
+            background-color: #a3d7ff;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: #7fdbff;
+        }
+
+        p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+
+            .image-container,
+            .summary-area {
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body>
-<h1 class="title">RaceForWater</h1>
+<h1 class="title">RaceForWater: Le Corps Humain et l'Océan</h1>
 <div class="main-content">
     <div class="image-container">
-        <img id="main-image" src="img/human_body.png" alt="Système musculaire" class="anatomy-image">
+        <img id="main-image" src="img/human_body.png" alt="Corps humain" class="anatomy-image">
     </div>
     <div class="summary-area">
         <h2 id="summary-title">Le corps humain et l'océan</h2>
-        <br>
-        <p id="summary-text">
-            Le corps humain est une machine biologique fascinante, composée de systèmes interconnectés qui travaillent en harmonie pour maintenir la vie.
-            <br>
-            <br>
-            Avec plus de 37 trillions de cellules, un cœur battant environ 100 000 fois par jour, et des poumons traitant 11 000 litres d'air quotidiennement, chaque partie joue un rôle crucial.
-            <br>
-            <br>
-            Tout comme le corps humain, l'océan est une entité vivante, dynamique et essentielle à la vie sur Terre.
-            <br>
-            <br>
-            Il couvre plus de 70% de la surface de la planète, régule le climat, produit 50 à 70% de l'oxygène que nous respirons, et abrite plus de 2,2 millions d'espèces connues.
-            <br>
-            <br>
-            L'océan peut être considéré comme le cœur de la planète, pompant l'énergie thermique à travers ses courants, filtrant les polluants, et agissant comme un énorme réservoir de carbone qui absorbe environ 30% du dioxyde de carbone émis par l'homme chaque année.
-            <br>
-            <br>
-            Comme les organes humains, chaque élément de l'océan, qu'il s'agisse des récifs coralliens, des mangroves ou des courants marins, joue un rôle vital. Ensemble, ils forment un système global interconnecté, en constante adaptation, garantissant la survie de toutes les formes de vie.
-            <br>
-            <br>
-            En explorant les parallèles entre le corps humain et l'océan, nous comprenons mieux leur interdépendance.
-            <br>
-            <br>
-            La santé de l'un est intrinsèquement liée à la santé de l'autre, nous rappelant notre responsabilité de préserver ces systèmes pour les générations futures.
-        </p>
-        <div id="secondary-container" class="secondary-container">
+        <div id="summary-text">
+            <p>Le corps humain est une machine biologique fascinante, composée de systèmes interconnectés qui travaillent en harmonie pour maintenir la vie.</p>
+            <p>Avec plus de 37 trillions de cellules, un cœur battant environ 100 000 fois par jour, et des poumons traitant 11 000 litres d'air quotidiennement, chaque partie joue un rôle crucial.</p>
+            <p>Tout comme le corps humain, l'océan est une entité vivante, dynamique et essentielle à la vie sur Terre.</p>
+            <p>Il couvre plus de 70% de la surface de la planète, régule le climat, produit 50 à 70% de l'oxygène que nous respirons, et abrite plus de 2,2 millions d'espèces connues.</p>
+            <p>L'océan peut être considéré comme le cœur de la planète, pompant l'énergie thermique à travers ses courants, filtrant les polluants, et agissant comme un énorme réservoir de carbone qui absorbe environ 30% du dioxyde de carbone émis par l'homme chaque année.</p>
+            <p>Comme les organes humains, chaque élément de l'océan, qu'il s'agisse des récifs coralliens, des mangroves ou des courants marins, joue un rôle vital.</p>
+            <p>Ensemble, ils forment un système global interconnecté, en constante adaptation, garantissant la survie de toutes les formes de vie.</p>
+            <p>En explorant les parallèles entre le corps humain et l'océan, nous comprenons mieux leur interdépendance.</p>
+            <p>La santé de l'un est intrinsèquement liée à la santé de l'autre, nous rappelant notre responsabilité de préserver ces systèmes pour les générations futures.</p>
+        </div>
+        <div id="secondary-container" class="secondary-container" style="display: none;">
             <img id="secondary-image" src="" alt="Détail supplémentaire" class="secondary-image">
             <p id="secondary-text"></p>
         </div>
-        <button id="back-button" class="back-button">Retour</button>
+        <button id="back-button" class="back-button" style="display: none;">Retour à la vue d'ensemble</button>
     </div>
 </div>
 
 <script>
     const hotspots = [
         {
-            x: 50, y: 5, name: "Cerveau",
+            x: 51, y: 14, name: "Cerveau",
             info: "Le cerveau contrôle toutes les fonctions du corps.",
             image: "img/cerveau.png",
             text: "Le cerveau humain est une structure complexe composée de plus de 86 milliards de neurones, reliés par un réseau de synapses. Il consomme environ 20% de l'énergie totale du corps humain, bien qu'il ne représente que 2% du poids corporel. Il est responsable de la pensée, de la mémoire, des émotions et de la coordination des fonctions corporelles.",
@@ -152,7 +161,7 @@
             secondaryText: "Le cerveau est analogue aux courants océaniques, qui agissent comme les systèmes nerveux de l'océan. Ces courants transportent des quantités massives d'eau parfois jusqu'à 100 millions de mètres cubes par seconde répartissant la chaleur, les nutriments et l'énergie. Par exemple, le Gulf Stream régule le climat européen, tout comme le cerveau régule la température corporelle humaine."
         },
         {
-            x: 53, y: 22, name: "Cœur",
+            x: 53, y: 28, name: "Cœur",
             info: "Le cœur pompe le sang dans tout le corps.",
             image: "img/coeur.png",
             text: "Le cœur humain bat en moyenne 100 000 fois par jour, pompant environ 7 000 litres de sang dans un réseau de 96 000 kilomètres de vaisseaux sanguins. Il assure la distribution de l'oxygène et des nutriments, tout en éliminant les déchets, pour maintenir le fonctionnement des cellules.",
@@ -160,7 +169,7 @@
             secondaryText: "Le cœur peut être comparé aux marées océaniques, qui montent et descendent sous l'effet de la gravité lunaire. Chaque jour, environ 1,5 milliard de tonnes d'eau se déplacent avec les marées, apportant des nutriments aux zones côtières et régulant les écosystèmes marins. Tout comme le cœur maintient la circulation sanguine, les marées maintiennent l'équilibre de la vie marine."
         },
         {
-            x: 50, y: 40, name: "Poumons",
+            x: 52, y: 35, name: "Poumons",
             info: "Les poumons permettent de respirer et d'oxygéner le sang.",
             image: "img/poumon.png",
             text: "Les poumons humains ont une surface interne équivalente à celle d'un court de tennis, permettant un échange gazeux efficace. Environ 300 millions d'alvéoles dans les poumons absorbent l'oxygène et libèrent le dioxyde de carbone. Un adulte respire environ 11 000 litres d'air par jour.",
@@ -183,7 +192,7 @@
             secondaryImage: "img/ocean_filter.png",
             secondaryText: "Les reins fonctionnent comme les récifs coralliens, qui filtrent les particules dans les eaux côtières. Par exemple, les mangroves peuvent éliminer jusqu'à 90% des polluants présents dans l'eau, contribuant à la purification des océans, tout comme les reins nettoient le sang."
         },
-            {
+        {
             x: 50, y: 95, name: "Intestin",
             info: "Les intestins absorbent les nutriments des aliments et éliminent les déchets.",
             image: "img/intestin.png",
@@ -201,11 +210,6 @@
         }
     ];
 
-    // Fonction pour ajouter des sauts de ligne après chaque phrase
-    function addLineBreaks(text) {
-        return text.replace(/([.!?])\s+/g, '$1<br><br>');
-    }
-
     const imageContainer = document.querySelector('.image-container');
     const mainImage = document.getElementById('main-image');
     const summaryTitle = document.getElementById('summary-title');
@@ -216,16 +220,7 @@
     const backButton = document.getElementById('back-button');
     const defaultImage = "img/human_body.png";
     const defaultTitle = "Le corps humain et l'océan";
-    const defaultText = addLineBreaks(`
-    Le corps humain est une machine biologique fascinante, composée de systèmes interconnectés qui travaillent en harmonie pour maintenir la vie.
-    Avec plus de 37 trillions de cellules, un cœur battant environ 100 000 fois par jour, et des poumons traitant 11 000 litres d'air quotidiennement, chaque partie joue un rôle crucial.
-    Tout comme le corps humain, l'océan est une entité vivante, dynamique et essentielle à la vie sur Terre.
-    Il couvre plus de 70% de la surface de la planète, régule le climat, produit 50 à 70% de l'oxygène que nous respirons, et abrite plus de 2,2 millions d'espèces connues.
-    L'océan peut être considéré comme le cœur de la planète, pompant l'énergie thermique à travers ses courants, filtrant les polluants, et agissant comme un énorme réservoir de carbone qui absorbe environ 30% du dioxyde de carbone émis par l'homme chaque année.
-    Comme les organes humains, chaque élément de l'océan, qu'il s'agisse des récifs coralliens, des mangroves ou des courants marins, joue un rôle vital. Ensemble, ils forment un système global interconnecté, en constante adaptation, garantissant la survie de toutes les formes de vie.
-    En explorant les parallèles entre le corps humain et l'océan, nous comprenons mieux leur interdépendance.
-    La santé de l'un est intrinsèquement liée à la santé de l'autre, nous rappelant notre responsabilité de préserver ces systèmes pour les générations futures.
-`);
+    const defaultText = summaryText.innerHTML;
 
     let hotspotsElements = [];
 
@@ -235,18 +230,28 @@
         hotspot.style.left = `${spot.x}%`;
         hotspot.style.top = `${spot.y}%`;
 
+        // Ajout des styles de visibilité
+        hotspot.style.position = 'absolute';
+        hotspot.style.transform = 'translate(-50%, -50%)'; // Centre le hotspot
+        hotspot.style.border = '2px solid #fff';
+        hotspot.style.width = '20px';
+        hotspot.style.height = '20px';
+        hotspot.style.borderRadius = '50%';
+        hotspot.style.cursor = 'pointer';
+        hotspot.style.backgroundColor = 'rgba(127, 219, 255, 0.7)';
+
         imageContainer.appendChild(hotspot);
         hotspotsElements.push(hotspot);
 
         hotspot.addEventListener('click', () => {
             summaryTitle.textContent = spot.name;
-            summaryText.innerHTML = addLineBreaks(spot.text);
+            summaryText.innerHTML = `<p>${spot.text}</p>`;
             mainImage.src = spot.image;
             mainImage.alt = spot.name;
 
             secondaryImage.src = spot.secondaryImage;
-            secondaryImage.alt = `${spot.name} détail`;
-            secondaryText.innerHTML = addLineBreaks(spot.secondaryText);
+            secondaryImage.alt = `${spot.name} - Analogie océanique`;
+            secondaryText.innerHTML = `<p>${spot.secondaryText}</p>`;
             secondaryContainer.style.display = 'block';
 
             hotspotsElements.forEach(el => el.style.display = 'none');
@@ -258,8 +263,10 @@
         summaryTitle.textContent = defaultTitle;
         summaryText.innerHTML = defaultText;
         mainImage.src = defaultImage;
-        mainImage.alt = "Système musculaire";
+        mainImage.alt = "Corps humain";
+
         secondaryContainer.style.display = 'none';
+
         hotspotsElements.forEach(el => el.style.display = 'block');
         backButton.style.display = 'none';
     });
