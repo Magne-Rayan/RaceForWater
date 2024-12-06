@@ -183,7 +183,7 @@
             secondaryImage: "img/ocean_filter.png",
             secondaryText: "Les reins fonctionnent comme les récifs coralliens, qui filtrent les particules dans les eaux côtières. Par exemple, les mangroves peuvent éliminer jusqu'à 90% des polluants présents dans l'eau, contribuant à la purification des océans, tout comme les reins nettoient le sang."
         },
-        {
+            {
             x: 50, y: 95, name: "Intestin",
             info: "Les intestins absorbent les nutriments des aliments et éliminent les déchets.",
             image: "img/intestin.png",
@@ -221,8 +221,10 @@
     Avec plus de 37 trillions de cellules, un cœur battant environ 100 000 fois par jour, et des poumons traitant 11 000 litres d'air quotidiennement, chaque partie joue un rôle crucial.
     Tout comme le corps humain, l'océan est une entité vivante, dynamique et essentielle à la vie sur Terre.
     Il couvre plus de 70% de la surface de la planète, régule le climat, produit 50 à 70% de l'oxygène que nous respirons, et abrite plus de 2,2 millions d'espèces connues.
-    L'océan peut être considéré comme le cœur de la planète, pompant l'énergie thermique à travers ses courants, filtrant les polluants, et agissant comme un énorme réservoir de carbone.
+    L'océan peut être considéré comme le cœur de la planète, pompant l'énergie thermique à travers ses courants, filtrant les polluants, et agissant comme un énorme réservoir de carbone qui absorbe environ 30% du dioxyde de carbone émis par l'homme chaque année.
+    Comme les organes humains, chaque élément de l'océan, qu'il s'agisse des récifs coralliens, des mangroves ou des courants marins, joue un rôle vital. Ensemble, ils forment un système global interconnecté, en constante adaptation, garantissant la survie de toutes les formes de vie.
     En explorant les parallèles entre le corps humain et l'océan, nous comprenons mieux leur interdépendance.
+    La santé de l'un est intrinsèquement liée à la santé de l'autre, nous rappelant notre responsabilité de préserver ces systèmes pour les générations futures.
 `);
 
     let hotspotsElements = [];
