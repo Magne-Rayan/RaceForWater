@@ -81,37 +81,92 @@
         .info-card a:hover {
             text-decoration: underline;
         }
+
+        .back-button {
+            display: none;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 20px;
+        }
+
+        .back-button:hover {
+            background-color: #2980b9;
+        }
     </style>
 </head>
 <body>
 <h1 class="title">RaceForWater</h1>
 <div class="main-content">
     <div class="image-container">
-        <img src="img/human_body.png" alt="Système musculaire" class="anatomy-image">
-        <!-- Les points seront ajoutés ici par JavaScript -->
+        <img id="main-image" src="img/human_body.png" alt="Système musculaire" class="anatomy-image">
     </div>
     <div class="summary-area">
-        <h2>Le corps humain </h2>
-        <p>Le corps humain est une merveille de complexité et de précision, une machine biologique où chaque cellule joue un rôle vital. Le cœur, par exemple, bat en permanence, assurant la circulation du sang à travers un réseau d'artères et de veines, tandis que le cerveau, véritable centre de commande, dirige chaque mouvement et pensée. Nos poumons, tels des filtres, régulent l'air que nous respirons, permettant à l'oxygène de nourrir nos cellules. Chaque organe, chaque système, est une unité qui interagit de manière fluide, formant un tout harmonieux. C'est un équilibre délicat, où chaque élément a son rôle à jouer.
-
-            Et de la même manière, l'océan, immense et mystérieux, renferme un système tout aussi complexe. Ses vagues, son marée, ses courants, sont autant de phénomènes interdépendants, régulés par des forces invisibles. Le corps humain et l'océan partagent cette symphonie de mouvements, cette harmonie secrète, où chaque élément se trouve connecté à un tout plus grand. En explorant l'un, on ne peut s'empêcher de penser que le corps humain, tout comme l'océan, est un univers à part entière, fascinant et insondable.</p>
-
+        <h2 id="summary-title">Le corps humain</h2>
+        <p id="summary-text">Le corps humain est une merveille de complexité et de précision, une machine biologique où chaque cellule joue un rôle vital...</p>
+        <button id="back-button" class="back-button">Retour</button>
     </div>
 </div>
 
 <script>
     const hotspots = [
-        { x: 50, y: 5, name: "Cerveau", info: "Le cerveau contrôle toutes les fonctions du corps.", link: "Organes/Cerveau.php" },
-        { x: 53, y: 22, name: "Cœur", info: "Le cœur pompe le sang dans tout le corps.", link: "Organes/Coeur.php" },
-        { x: 50, y: 32, name: "Poumons", info: "Les poumons permettent la respiration.", link: "Organes/Poumons.php" },
-        { x: 45, y: 37, name: "Foie", info: "Le foie filtre le sang et produit des protéines essentielles.", link: "Organes/Foie.php" },
-        { x: 52, y: 38, name: "Estomac", info: "L'estomac digère la nourriture.", link: "Organes/Estomac.php" },
-        { x: 45, y: 44, name: "Reins", info: "Les reins filtrent le sang et produisent l'urine.", link: "Organes/Reins.php" },
-        { x: 50, y: 47, name: "Intestins", info: "Les intestins absorbent les nutriments et éliminent les déchets.", link: "Organes/Intestins.php" },
-
+        {
+            x: 50, y: 5, name: "Cerveau",
+            info: "Le cerveau contrôle toutes les fonctions du corps.",
+            image: "img/cerveau.png",
+            text: "Le cerveau est l'organe de commande du corps humain. Il traite les informations sensorielles et contrôle les pensées, la mémoire, et les mouvements."
+        },
+        {
+            x: 53, y: 22, name: "Cœur",
+            info: "Le cœur pompe le sang dans tout le corps.",
+            image: "img/coeur.png",
+            text: "Le cœur est un organe musculaire qui pompe le sang dans tout le corps. Il bat environ 100 000 fois par jour pour transporter l'oxygène et les nutriments."
+        },
+        {
+            x: 50, y: 32, name: "Poumons",
+            info: "Les poumons permettent la respiration.",
+            image: "img/poumons.png",
+            text: "Les poumons sont responsables de l'échange de gaz dans le corps. Ils absorbent l'oxygène et libèrent le dioxyde de carbone."
+        },
+        {
+            x: 45, y: 37, name: "Foie",
+            info: "Le foie filtre le sang et produit des protéines essentielles.",
+            image: "img/foie.png",
+            text: "Le foie est un organe vital qui détoxifie le sang, produit de la bile pour la digestion, et stocke des vitamines essentielles."
+        },
+        {
+            x: 52, y: 38, name: "Estomac",
+            info: "L'estomac digère la nourriture.",
+            image: "img/estomac.png",
+            text: "L'estomac joue un rôle clé dans la digestion, en utilisant des acides pour décomposer les aliments en nutriments absorbables."
+        },
+        {
+            x: 45, y: 44, name: "Reins",
+            info: "Les reins filtrent le sang et produisent l'urine.",
+            image: "img/reins.png",
+            text: "Les reins sont deux organes en forme de haricot qui filtrent les déchets du sang et régulent l'équilibre des fluides."
+        },
+        {
+            x: 50, y: 47, name: "Intestins",
+            info: "Les intestins absorbent les nutriments et éliminent les déchets.",
+            image: "img/intestins.png",
+            text: "Les intestins digèrent les aliments, absorbent les nutriments essentiels, et éliminent les déchets sous forme de selles."
+        }
     ];
 
     const imageContainer = document.querySelector('.image-container');
+    const mainImage = document.getElementById('main-image');
+    const summaryTitle = document.getElementById('summary-title');
+    const summaryText = document.getElementById('summary-text');
+    const backButton = document.getElementById('back-button');
+    const defaultImage = "img/human_body.png";
+    const defaultTitle = "Le corps humain";
+    const defaultText = "Le corps humain est une merveille de complexité et de précision, une machine biologique où chaque cellule joue un rôle vital...";
+    let hotspotsElements = [];
 
     hotspots.forEach(spot => {
         const hotspot = document.createElement('div');
@@ -119,27 +174,33 @@
         hotspot.style.left = `${spot.x}%`;
         hotspot.style.top = `${spot.y}%`;
 
-        const infoCard = document.createElement('div');
-        infoCard.className = 'info-card';
-        infoCard.innerHTML = `
-                <h3>${spot.name}</h3>
-                <p>${spot.info}</p>
-                <a href="${spot.link}">Plus d'informations</a>
-            `;
-
-        hotspot.appendChild(infoCard);
         imageContainer.appendChild(hotspot);
+        hotspotsElements.push(hotspot);
 
-        hotspot.addEventListener('mouseenter', () => {
-            infoCard.style.display = 'block';
-        });
+        // Update the summary area and main image on click
+        hotspot.addEventListener('click', () => {
+            summaryTitle.textContent = spot.name;
+            summaryText.textContent = spot.text;
+            mainImage.src = spot.image;
+            mainImage.alt = spot.name;
 
-        hotspot.addEventListener('mouseleave', () => {
-            infoCard.style.display = 'none';
+            // Hide all hotspots and show back button
+            hotspotsElements.forEach(el => el.style.display = 'none');
+            backButton.style.display = 'block';
         });
     });
+
+    // Return to default view
+    backButton.addEventListener('click', () => {
+        summaryTitle.textContent = defaultTitle;
+        summaryText.textContent = defaultText;
+        mainImage.src = defaultImage;
+        mainImage.alt = "Système musculaire";
+
+        // Show all hotspots and hide back button
+        hotspotsElements.forEach(el => el.style.display = 'block');
+        backButton.style.display = 'none';
+    });
 </script>
-
-
 </body>
 </html>
